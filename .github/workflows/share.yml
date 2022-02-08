@@ -13,5 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Delete old branch
-        run: ls
-        run: git diff ${{ github.event.before }} -- . :^exclusive
+        run: ls && git diff ${{ github.event.before }} -- . :^exclusive
