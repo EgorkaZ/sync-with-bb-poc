@@ -1,0 +1,15 @@
+name: 'to bb'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  filter_diff:
+    name: Filter out exclusive part
+
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Delete old branch
+        run: git diff ${{ github.event.before }} -- . :^exclusive
