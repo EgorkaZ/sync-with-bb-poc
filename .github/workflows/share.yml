@@ -12,5 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Delete old branch
-        run: ls && git log --oneline -n10 && git diff ${{ github.event.before }} -- . :^exclusive
+        with:
+          fetch-depth: 0
+      - name: Get diff
+        run: git diff ${{ github.event.before }} -- . :^exclusive
