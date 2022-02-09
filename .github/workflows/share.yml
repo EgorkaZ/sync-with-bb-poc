@@ -13,6 +13,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Get diff
-        run: git diff ${{ github.event.before }} -- . :^exclusive
+        run: git diff --patch ${{ github.event.before }} -- . :^exclusive :^.github > shared.patch
+      - name: Checkout to BB upstream
+        uses: actions/checkout@v2
+          with:
+            ref: bb-upstream
+            persist-credentials: false
+      - name: Commit shared changes
+        run: |
+          git config --local user.email "zudin.0197@gmail.com"
+          git config --local user.name "BB upstream action"
+          git apply shared.patch
+          rm shared.patch
+          git commit -m "Update BB upstream" -a
+      - name: Push to BB upstream
+        uses: ad-m/github-push-action@master
+        with:
+          branch: bb-upstream
