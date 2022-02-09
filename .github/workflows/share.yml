@@ -19,7 +19,11 @@ jobs:
       - name: Get diff
         id: shared_diff
         run: |
-          echo "::set-output name=content::$( git diff --patch ${{ github.event.before }} -- . :^exclusive :^.github )"
+          DIFF_CONTENT=$( git diff --patch ${{ github.event.before }} -- . :^exclusive :^.github )
+          DIFF_CONTENT="${DIFF_CONTENT//'%'/'%25'}"
+          DIFF_CONTENT="${DIFF_CONTENT//$'\n'/'%0A'}"
+          DIFF_CONTENT="${DIFF_CONTENT//$'\r'/'%0D'}"
+          echo "::set-output name=content::$DIFF_CONTENT"
       - name: Show diff
         run: echo "${{ steps.shared_diff.outputs.content }}"
       - name: Checkout BB upstream
