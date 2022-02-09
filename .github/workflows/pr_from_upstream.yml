@@ -1,0 +1,23 @@
+name: PR from upstream
+
+on:
+  push:
+    branches:
+      - bb-upstream
+
+jobs:
+  - name: Create PR from upstream
+
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout upstream
+        uses: actions/checkout@v2
+          ref: bb-upstream
+          persist-credentials: true
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          base: master
+          branch: bb-upstream
+          title: Update from internal repo
+          body: Automated update of shared part

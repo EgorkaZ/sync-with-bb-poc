@@ -1,9 +1,9 @@
 name: 'to bb'
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
 jobs:
   filter_diff:
