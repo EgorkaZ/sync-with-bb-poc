@@ -19,3 +19,7 @@ Please, let something work
 ### Version five
 
 Once again I want to trigger action
+
+### Sixth version
+
+I want to see the diff file

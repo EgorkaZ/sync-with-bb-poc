@@ -20,6 +20,8 @@ jobs:
         id: shared_diff
         run: |
           echo "::set-output name=content::$( git diff --patch ${{ github.event.before }} -- . :^exclusive :^.github )"
+      - name: Show diff
+        run: echo "${{ steps.shared_diff.outputs.content }}"
       - name: Checkout BB upstream
         uses: actions/checkout@v2
         with:
@@ -30,7 +32,7 @@ jobs:
         run: |
           git config --local user.email "zudin.0197@gmail.com"
           git config --local user.name "BB upstream action"
-          echo ${{ steps.shared_diff.outputs.content }} | git apply
+          echo "${{ steps.shared_diff.outputs.content }}" | git apply
           git commit -m "Update BB upstream" -a
       - name: Push to BB upstream
         if: steps.shared_diff.outputs.content != ''

@@ -11,3 +11,7 @@ There are also some changes in shared
 ### Version five
 
 I hope so much for this try, that I even make some exclusive changes
+
+### Sixth version
+
+And I want to be sure it is not contained in the diff
