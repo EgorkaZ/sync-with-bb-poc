@@ -6,7 +6,8 @@ on:
       - bb-upstream
 
 jobs:
-  - name: Create PR from upstream
+  create_pr:
+    name: Create PR from upstream
 
     runs-on: ubuntu-20.04
     steps:
