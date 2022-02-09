@@ -27,3 +27,9 @@ I want to see the diff file
 ### Seventh version
 
 Now hope for it working is lost, no modification for exclusive
+
+### Version number eight
+
+It turns out that you have to keep your upstream up-to-date
+
+**TOTHINK**: Maybe we should get diff with upstream branch instead of `push.before`
