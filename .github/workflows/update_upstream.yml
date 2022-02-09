@@ -21,6 +21,7 @@ jobs:
         run: |
           DIFF_CONTENT=$( git diff --patch ${{ github.event.before }} )
           DIFF_CONTENT="${DIFF_CONTENT//'%'/'%25'}"
+          DIFF_CONTENT="${DIFF_CONTENT//'$'/'%24'}"
           DIFF_CONTENT="${DIFF_CONTENT//$'\n'/'%0A'}"
           DIFF_CONTENT="${DIFF_CONTENT//$'\r'/'%0D'}"
           echo "::set-output name=content::$DIFF_CONTENT"
