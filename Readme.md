@@ -33,3 +33,7 @@ Now hope for it working is lost, no modification for exclusive
 It turns out that you have to keep your upstream up-to-date
 
 **TOTHINK**: Maybe we should get diff with upstream branch instead of `push.before`
+
+### Version №9
+
+Also with exclusive changes
