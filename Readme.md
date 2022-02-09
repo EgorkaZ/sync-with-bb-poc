@@ -23,3 +23,7 @@ Once again I want to trigger action
 ### Sixth version
 
 I want to see the diff file
+
+### Seventh version
+
+Now hope for it working is lost, no modification for exclusive
