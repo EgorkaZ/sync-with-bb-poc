@@ -11,3 +11,7 @@ Changes in `exclusive` must not be in diff
 ### Third shared version
 
 There's no change in exclusive part for now
+
+### Fourth version of shared
+
+Please, let something work
