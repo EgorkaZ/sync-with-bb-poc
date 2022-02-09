@@ -19,9 +19,9 @@ jobs:
         run: git diff --patch ${{ github.event.before }} -- . :^exclusive :^.github > shared.patch
       - name: Checkout to BB upstream
         uses: actions/checkout@v2
-          with:
-            ref: bb-upstream
-            persist-credentials: false
+        with:
+          ref: bb-upstream
+          persist-credentials: false
       - name: Commit shared changes
         run: |
           git config --local user.email "zudin.0197@gmail.com"
