@@ -37,3 +37,7 @@ It turns out that you have to keep your upstream up-to-date
 ### Version №9
 
 Also with exclusive changes
+
+### Verstion #10
+
+Now we want to have bb-upstream fully synced with master
