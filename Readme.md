@@ -45,3 +45,7 @@ Now we want to have bb-upstream fully synced with master
 ### Version number eleven
 
 We got some changes from the outside. Now I expect a PR to github master
+
+### 12.0.0 release!
+
+Both parts are updated
