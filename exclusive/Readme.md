@@ -23,3 +23,7 @@ Please, don't go to bb-upstream
 ### Version #10
 
 Even the exclusive part. Idea is that we'll only read and write shared part on Bitbucket side
+
+### 12.0.0 release!
+
+Now I'm starting to think on github actions for PRs
