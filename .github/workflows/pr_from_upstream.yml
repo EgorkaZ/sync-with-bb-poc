@@ -3,7 +3,7 @@ name: PR from upstream
 on:
   push:
     branches:
-      - bb-upstream
+      - '**-from-stash'
 
 jobs:
   create_pr:
@@ -13,13 +13,10 @@ jobs:
     steps:
       - name: Checkout upstream
         uses: actions/checkout@v2
-        with:
-          ref: bb-upstream
-          persist-credentials: true
       - name: Create PR
-        uses: peter-evans/create-pull-request@v3
+        uses: repo-sync/pull-request@v2
         with:
-          base: bb-upstream
-          branch: master
-          title: Update from internal repo
-          body: Automated update of shared part
+          source_branch: ""
+          destination_branch: master
+          pr_title: Update from internal repo
+          pr_body: Automated update of shared part
