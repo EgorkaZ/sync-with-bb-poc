@@ -14,10 +14,10 @@ jobs:
       - name: Checkout upstream
         uses: actions/checkout@v2
       - name: Create PR
-        uses: repo-sync/pull-request@v2
+        uses: peter-evans/create-pull-request@v3
         with:
-          source_branch: ""
-          destination_branch: master
-          github_token: ${{ secrets.SEC_TOKEN }}
-          pr_title: Update from internal repo
-          pr_body: Automated update of shared part
+          branch: "${{ github.events.push.ref }}"
+          base: master
+          title: Update from internal repo
+          body: Automated update of shared part
+          # token: ${{ secrets.SEC_TOKEN }}
