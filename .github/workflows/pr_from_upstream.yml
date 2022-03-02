@@ -20,7 +20,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
       - name: Handle non-deadly error
-        if: setps.pr_create.status != 'success'
+        if: steps.pr_create.status != 'success'
         run: |
           exit_code=$?
           [ $exit_code -gt 1 ] && exit $exit_code
