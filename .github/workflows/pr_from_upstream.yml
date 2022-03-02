@@ -22,5 +22,6 @@ jobs:
       - name: Handle non-deadly error
         if: steps.pr_create.status != 'success'
         run: |
+          set -x
           exit_code=$?
           [ $exit_code -gt 1 ] && exit $exit_code
