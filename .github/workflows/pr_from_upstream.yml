@@ -14,15 +14,13 @@ jobs:
       - name: Checkout upstream
         uses: actions/checkout@v2
       - name: Create PR
-        run: |
-          c1exec() {
-            rv=0
-            "$@" ; rv=$?
-            [ $rv -gt 1 ] && return $rv
-            return 0
-          }
-
-          set -x
-          c1exec gh pr create --base master --body "Automated update of shared part" --title "Update from internal repo"
+        id: pr_create
+        run: gh pr create --base master --body "Automated update of shared part" --title "Update from internal repo"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      - name: Handle non-deadly error
+        if: setps.pr_create.status != 'success'
+        run: |
+          exit_code=$?
+          [ $exit_code -gt 1 ] && exit $exit_code
