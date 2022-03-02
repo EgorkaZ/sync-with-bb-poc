@@ -24,4 +24,4 @@ jobs:
         run: |
           set -x
           exit_code=$?
-          [ $exit_code -gt 1 ] && exit $exit_code
+          if [ $exit_code -gt 1 ]; then exit $exit_code; fi
