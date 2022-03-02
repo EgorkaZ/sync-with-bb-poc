@@ -19,9 +19,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
-      - name: Handle non-deadly error
+      - name: Check previous step errors
         if: steps.pr_create.status != 'success'
         run: |
           set -x
           exit_code=$?
-          if [ $exit_code -gt 1 ]; then exit $exit_code; fi
+          if [ $exit_code -gt 1 ]; then
+            exit $exit_code
+          fi
