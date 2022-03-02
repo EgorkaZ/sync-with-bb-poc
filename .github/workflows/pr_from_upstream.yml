@@ -14,10 +14,16 @@ jobs:
       - name: Checkout upstream
         uses: actions/checkout@v2
       - name: Create PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: "${{ github.events.push.ref }}"
-          base: master
-          title: Update from internal repo
-          body: Automated update of shared part
-          # token: ${{ secrets.SEC_TOKEN }}
+        id: pr_create
+        run: gh pr create --base master --body "Automated update of shared part" --title "Update from internal repo"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      - name: Check previous step errors
+        if: steps.pr_create.status != 'success'
+        run: |
+          set -x
+          exit_code=$?
+          if [ $exit_code -gt 1 ]; then
+            exit $exit_code
+          fi
