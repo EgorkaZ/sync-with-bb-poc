@@ -22,6 +22,7 @@ jobs:
             return 0
           }
 
+          set -x
           c1exec gh pr create --base master --body "Automated update of shared part" --title "Update from internal repo"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
